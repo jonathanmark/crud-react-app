@@ -13,7 +13,7 @@ import {
 
 export const UpdateUser = ({userToUpdate}) => {
     const {id} = useParams();
-    console.log("User to update is: " + userToUpdate);
+    console.log("[UpdateUser.js]User to update is: " + userToUpdate);
     let history = useHistory();
     // const {users, setUsers} = useContext(GlobalContext);
     const [users, setUsers] = useState({
@@ -24,7 +24,7 @@ export const UpdateUser = ({userToUpdate}) => {
     const {name, email, phone} = users;
 
     const loadUser = async () => {
-        const result = await axios.get(`http://localhost:3001/users/${id}`);
+        const result = await axios.get(`http://localhost:3001/users/${userToUpdate}`);
         setUsers(result.data);
     };
 
@@ -38,7 +38,7 @@ export const UpdateUser = ({userToUpdate}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:3001/users/${id}`, users);
+        await axios.put(`http://localhost:3001/users/${userToUpdate}`, users);
         history.push("/")  
         // loadUser();
     };

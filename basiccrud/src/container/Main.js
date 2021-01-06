@@ -6,16 +6,17 @@ import UpdateUser from '../components/UpdateUser'
 export const Main = () => {
 
     const [isUpdating, setIsUpdating] = useState(false);
+    const [userToUpdate, setUserToUpdate] = useState(null);
 
-    const setToTrueAndGetUserData = (userToUpdate) => {
+    const setToTrueAndGetUserData = (userId) => {
         setIsUpdating(true);
-        const userId = userToUpdate;
+        console.log("[Main.js] User to update is:" + userId);
+        setUserToUpdate(userId);
     }
 
-    console.log("isUpdating is:" + isUpdating);
     return (
         <div>
-            {isUpdating ? <UpdateUser userToUpdate = {setToTrueAndGetUserData.userId}/> : <InputForm/>}
+            {isUpdating ? <UpdateUser userToUpdate = {userToUpdate}/> : <InputForm/>}
             <ListUsers setToTrueAndGetUserData={setToTrueAndGetUserData}/>
         </div>
     )
