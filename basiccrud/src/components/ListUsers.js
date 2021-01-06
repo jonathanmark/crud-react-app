@@ -6,8 +6,11 @@ import {GlobalContext} from '../context/GlobalContext';
 // import UpdateUser from '../components/UpdateUser';
 
 
-export const ListUsers = () => {
+export const ListUsers = ({setToTrueAndGetUserData}) => {
     const {users, deleteUser} = useContext(GlobalContext);
+
+    const updateUser = () => {}
+
     return (
         <div>
             <table className = "table border shadow ml-2">
@@ -29,7 +32,8 @@ export const ListUsers = () => {
                                 <td>{user.phone}</td>
                                 <td>
                                     <Link className = "btn btn-primary mr-2" to = {`/view/${user.id}`}>View</Link>
-                                    <Button className = "mr-2" color = "warning" onClick = {() => deleteUser(user.id)} >Update</Button>
+                                    <Link className = "btn btn-warning mr-2" to = {`/update/${user.id}`}>Update Old</Link>
+                                    <Button className = "mr-2" color = "warning" onClick = {() => setToTrueAndGetUserData(user.id)} >Update New</Button>
                                     <Button color = "danger" onClick = {() => deleteUser(user.id)} >Delete</Button>
                                     
                                 </td>

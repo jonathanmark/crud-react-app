@@ -11,8 +11,9 @@ import {
     Button
 } from 'reactstrap'
 
-export const UpdateUser = () => {
+export const UpdateUser = ({userToUpdate}) => {
     const {id} = useParams();
+    console.log("User to update is: " + userToUpdate);
     let history = useHistory();
     // const {users, setUsers} = useContext(GlobalContext);
     const [users, setUsers] = useState({

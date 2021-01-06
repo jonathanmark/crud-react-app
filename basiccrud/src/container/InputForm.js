@@ -10,14 +10,17 @@ import {
 } from 'reactstrap'
 
 const InputForm = () => {
-    // const {updateButton} = useContext(GlobalContext);
+
+    const nameInput = React.createRef();
+    
     const {handleChange, handleSubmit, users} = useInputForm();
+
     return (
         <div className = "w-75 p-5">
             <Form onSubmit = {handleSubmit}>
                 <FormGroup>
                     <Label>Name</Label>
-                    <Input type = "text" name = "name" className = "form-control form-control-lg" placeholder = "Enter Name" value = {users.name || ''} onChange = {handleChange} required = {true}></Input>
+                    <Input ref={nameInput} type = "text" name = "name" className = "form-control form-control-lg" placeholder = "Enter Name" value = {users.name || ''} onChange = {handleChange} required = {true}></Input>
                     <Label>Email</Label>
                     <Input type = "email" name = "email" className = "form-control form-control-lg" placeholder = "Enter email" value = {users.email || ''} onChange = {handleChange} required = {true}></Input>
                     <Label>Contact</Label>
